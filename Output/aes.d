@@ -60,4 +60,5 @@
 ..\..\output\aes.o: ..\..\User\Bsp\display\key.h
 ..\..\output\aes.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\aes.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\aes.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\aes.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\string.h

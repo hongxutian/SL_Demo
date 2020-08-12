@@ -27,7 +27,7 @@ struct Menu_Page_Structure
 struct Menu_Page_Structure *menu_page_struc=RT_NULL;
 
 //初始化页面
-void Menu_Page_Init(void *param)
+char Menu_Page_Init(void *param)
 {
 	if(menu_page_struc == RT_NULL)
 	{
@@ -41,6 +41,7 @@ void Menu_Page_Init(void *param)
 		menu_page_struc->top=0;
 		menu_page_struc->display_flag=1;
 	}
+	return 0;
 }
 	
 //清除	

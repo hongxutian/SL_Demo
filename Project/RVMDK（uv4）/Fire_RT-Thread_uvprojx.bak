@@ -364,7 +364,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\rtthread\3.0.3\components\finsh;..\..\rtthread\3.0.3\include;..\..\rtthread\3.0.3\include\libc;..\..\User\Bsp\led;..\..\User\Bsp\key;..\..\User\Bsp\uart;..\..\User\Bsp\exti;..\..\User\Bsp\g4;..\..\User\Bsp\oled;..\..\User\Bsp\display;..\..\User\Bsp\flash;..\..\User\Bsp\FATFS</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\rtthread\3.0.3\components\finsh;..\..\rtthread\3.0.3\include;..\..\rtthread\3.0.3\include\libc;..\..\User\Bsp\led;..\..\User\Bsp\key;..\..\User\Bsp\uart;..\..\User\Bsp\exti;..\..\User\Bsp\g4;..\..\User\Bsp\oled;..\..\User\Bsp\display;..\..\User\Bsp\flash;..\..\User\Bsp\FATFS;..\..\User\Bsp\rtc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -611,6 +611,11 @@
               <FileName>sysinit.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\Bsp\flash\sysinit.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\Bsp\rtc\bsp_rtc.c</FilePath>
             </File>
           </Files>
         </Group>

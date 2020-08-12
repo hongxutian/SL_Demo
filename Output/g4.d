@@ -58,3 +58,4 @@
 ..\..\output\g4.o: ..\..\User\Bsp\display\key.h
 ..\..\output\g4.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\g4.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\g4.o: ..\..\User\Bsp\fpm\fpm.h

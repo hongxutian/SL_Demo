@@ -59,6 +59,7 @@
 ..\..\output\query_user_page.o: ..\..\User\Bsp\display\key.h
 ..\..\output\query_user_page.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\query_user_page.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\query_user_page.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\query_user_page.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 ..\..\output\query_user_page.o: ..\..\User\Bsp\display\UI.h
 ..\..\output\query_user_page.o: ..\..\User\Bsp\FATFS\ff.h

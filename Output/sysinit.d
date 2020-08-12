@@ -59,6 +59,7 @@
 ..\..\output\sysinit.o: ..\..\User\Bsp\display\key.h
 ..\..\output\sysinit.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\sysinit.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\sysinit.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\sysinit.o: ..\..\User\Bsp\FATFS\ff.h
 ..\..\output\sysinit.o: ..\..\User\Bsp\FATFS\integer.h
 ..\..\output\sysinit.o: ..\..\User\Bsp\FATFS\ffconf.h

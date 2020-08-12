@@ -48,6 +48,7 @@ void rt_hw_board_init()
 
 	Key_Init();	
 	RTC_CheckAndConfig(0);
+	FPM_Init();
 	
 /* 调用组件初始化函数 (use INIT_BOARD_EXPORT()) */
 #ifdef RT_USING_COMPONENTS_INIT

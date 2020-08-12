@@ -75,6 +75,18 @@ rt_mq_t inputsig_mq = RT_NULL;//外部输入信号消息队列
   */
 int main(void)
 {	
+	uint8_t i,res;
+	uint16_t num;
+
+	i = FPM_GetUserNumber(&num);
+	rt_kprintf("\nnumber:i=%d,num=%d",i,num);
+//	i=FPM_GetAvailableUserNumber(&num,&res);
+//	rt_kprintf("\navaliable num:i=%d num=%d res=%d",i,num,res);
+////	return 0;     
+//	i=FPM_AddUser(0x01,100,0x01,&res);
+//	rt_kprintf("\nadd:i=%d,res=%d",i,res);
+//	return 0;
+	
 	OLED_Init();
 	OLED_GRAM_Fill(0);
 	

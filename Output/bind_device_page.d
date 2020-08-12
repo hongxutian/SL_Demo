@@ -59,6 +59,7 @@
 ..\..\output\bind_device_page.o: ..\..\User\Bsp\display\key.h
 ..\..\output\bind_device_page.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\bind_device_page.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\bind_device_page.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\bind_device_page.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 ..\..\output\bind_device_page.o: ..\..\User\Bsp\display\UI.h
 ..\..\output\bind_device_page.o: ..\..\User\Bsp\FATFS\ff.h

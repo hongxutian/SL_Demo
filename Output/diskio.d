@@ -61,4 +61,5 @@
 ..\..\output\diskio.o: ..\..\User\Bsp\display\key.h
 ..\..\output\diskio.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\diskio.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\diskio.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\diskio.o: ..\..\User\Bsp\FATFS\ffconf.h

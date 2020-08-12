@@ -59,6 +59,7 @@
 ..\..\output\oled_i2c.o: ..\..\User\board.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\oled_i2c.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\oled\codetab.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\oled\codingtable.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\oled\zh.h

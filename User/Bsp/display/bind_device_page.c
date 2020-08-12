@@ -10,7 +10,7 @@ struct Bind_Device_Page_Structure
 };
 
 struct Bind_Device_Page_Structure *bind_page_struc=RT_NULL;
-void Bind_Device_Page_Init(void *param)
+char Bind_Device_Page_Init(void *param)
 {
 	if(bind_page_struc == RT_NULL)
 	{
@@ -22,6 +22,7 @@ void Bind_Device_Page_Init(void *param)
 		strcpy(bind_page_struc->display_buff,"请在手机上输入绑定码:11234567");
 		bind_page_struc->display_flag=1;
 	}
+	return 0;
 }
 	
 

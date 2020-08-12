@@ -22,7 +22,7 @@ struct Manage_Gen_Password_Page_Structure
 struct Manage_Gen_Password_Page_Structure *managegp_page_struc=RT_NULL;
 
 //初始化页面
-void Manage_Gen_Password_Page_Init(void *param)
+char Manage_Gen_Password_Page_Init(void *param)
 {
 	struct General_Password_Structure *p;
 	
@@ -86,6 +86,7 @@ void Manage_Gen_Password_Page_Init(void *param)
 			}
 		}
 	}
+	return 0;
 }
 	
 //清除	

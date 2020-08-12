@@ -6,7 +6,7 @@ FIL UI_FILE;
 
 struct UI_Stack
 {
-	void (*init)(void *param);
+	char (*init)(void *param);
 	void (*clear)(void *param);
 	void (*display)(void *param);
 	void (*action)(char param);
@@ -16,7 +16,7 @@ struct UI_Stack
 
 struct UI_Stack *ui_stack;
 
-void UI_Page_Add(void (*func_init)(void *param),
+char UI_Page_Add(char (*func_init)(void *param),
 	void (*func_clear)(void *param),
 		void (*func_display)(void *param),
 			void (*func_load)(void *param),
@@ -24,6 +24,12 @@ void UI_Page_Add(void (*func_init)(void *param),
 					void *init_param)
 {
 	struct UI_Stack *p;
+	
+	if(func_init(init_param)!=0)
+	{
+		return 1;
+	}
+	
 	p = (struct UI_Stack *)rt_malloc(sizeof(struct UI_Stack));
 	p->init=func_init;
 	p->clear=func_clear;
@@ -32,7 +38,7 @@ void UI_Page_Add(void (*func_init)(void *param),
 	p->next=ui_stack;
 	p->load=func_load;
 	ui_stack=p;
-	ui_stack->init(init_param);
+	return 0;
 }
 
 void UI_Page_Delete(void)
@@ -130,7 +136,7 @@ void UI_Thread_Entry(void *param)
 				ui_stack=ui_stack->next;
 				rt_free(t);
 			}
-			ui_stack->init(RT_NULL);
+			ui_stack->load(RT_NULL);
 			p=ui_stack;
 		}else if(noinput == 1002)
 		{

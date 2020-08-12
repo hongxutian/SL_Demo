@@ -18,7 +18,7 @@ struct Query_User_Page_Structure
 struct Query_User_Page_Structure *query_user_page_struc=RT_NULL;
 
 //初始化页面
-void Query_User_Page_Init(void *param)
+char Query_User_Page_Init(void *param)
 {
 	struct User_Info_Structure *p;
 	if(query_user_page_struc == RT_NULL)
@@ -78,6 +78,7 @@ void Query_User_Page_Init(void *param)
 			}
 		}
 	}
+	return 0;
 }
 	
 //清除	

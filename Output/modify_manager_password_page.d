@@ -59,6 +59,7 @@
 ..\..\output\modify_manager_password_page.o: ..\..\User\Bsp\display\key.h
 ..\..\output\modify_manager_password_page.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\modify_manager_password_page.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\modify_manager_password_page.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\modify_manager_password_page.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 ..\..\output\modify_manager_password_page.o: ..\..\User\Bsp\display\UI.h
 ..\..\output\modify_manager_password_page.o: ..\..\User\Bsp\FATFS\ff.h

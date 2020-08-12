@@ -20,6 +20,7 @@
 #include "key.h"
 #include "bsp_spi_flash.h"
 #include "bsp_rtc.h"
+#include "fpm.h"
 
 #define PASSWORD_LEN_MAX 10
 

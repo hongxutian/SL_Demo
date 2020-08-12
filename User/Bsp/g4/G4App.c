@@ -9,6 +9,7 @@
 #include "UI.h"
 #include "msg_page.h"
 #include "sysinit.h"
+#include "add_user_page.h"
 
 uint8_t cmdflag = 0;
 struct G4_CMD_LINK
@@ -471,13 +472,24 @@ void G4APP_Rece_Thread_Entry(void *parameter)
 	uint8_t len;
 	while(1)
 	{
-		//网查网络状态
+		//网查网络状态G4_Cmd ( "AT+RESET\r\n", "OK", 0,1000, 0);
 		while(1)
 		{
-			rt_kprintf("\n检查网络状况\n");
-			i = G4_Init();
-			if(i != 0)
+			for(i=0;i<10;i++)
 			{
+				rt_kprintf("\n检查网络状况\n");
+				j = G4_Init();
+				if(j != 0)
+				{
+					rt_thread_delay(10000);
+				}else
+				{
+					break;
+				}
+			}
+			if(i >= 10)
+			{
+				G4_Cmd ( "AT+RESET\r\n", "OK", 0,1000, 0);
 				rt_thread_delay(10000);
 			}else
 			{
@@ -558,6 +570,8 @@ void G4APP_Rece_Thread_Entry(void *parameter)
 			if((G4_MSG->num > 16 && ((G4_MSG->num - 5)%16 != 0)) || G4_MSG->num < 16)
 			{
 				rt_kprintf("\n与服务器连接断开\n");
+				G4_Cmd ( "AT+RESET\r\n", "OK", 0,1000, 0);
+				rt_thread_delay(10000);
 				G4_MSG->buff[G4_MSG->num] = '\0';
 				if(strstr((char *)G4_MSG->buff,"CLOSED") != 0)
 				{
@@ -647,22 +661,19 @@ void G4APP_Rece_Thread_Entry(void *parameter)
 						cJSON_Delete(jsend);	
 					}else if(rt_strcmp(jitem1->valuestring,"addUser")==0)
 					{
-//						jitem2 = cJSON_GetObjectItem(json,"password");//
-//						jsend=cJSON_CreateObject();
-//						cJSON_AddStringToObject(jsend,"type","modifyPassword");
-//						if(Modify_Manager_Password(jitem2->valuestring,&T_FILE)==0)
-//						{
-//							cJSON_AddStringToObject(jsend,"result","success");
-//						}else
-//						{
-//							cJSON_AddStringToObject(jsend,"result","fail");
-//						}
-//						out=cJSON_PrintUnformatted(jsend);
-//						len=rt_strlen(out);
-//						len++;
-//						rt_mq_send(g4msgmq,out,len);
-//						rt_free(out);
-//						cJSON_Delete(jsend);	
+						jitem2 = cJSON_GetObjectItem(json,"name");//
+						if(UI_Page_Add(Add_User_Page_Init,Add_User_Page_Clear,Add_User_Page_Display,Add_User_Page_Load,Add_User_Page_Action,jitem2->valuestring) != 0)
+						{
+							jsend=cJSON_CreateObject();
+							cJSON_AddStringToObject(jsend,"type","addUser");
+							cJSON_AddStringToObject(jsend,"result","fail");
+							out=cJSON_PrintUnformatted(jsend);
+							len=rt_strlen(out);
+							len++;
+							rt_mq_send(g4msgmq,out,len);
+							rt_free(out);
+							cJSON_Delete(jsend);
+						}							
 					}else if(rt_strcmp(jitem1->valuestring,"modifyUserName")==0)
 					{
 						jitem2 = cJSON_GetObjectItem(json,"number");

@@ -158,7 +158,7 @@ void key_thread_entry(void* parameter)
 					i = 15;
 					break;
 			}
-			//rt_kprintf("\n key=%d",i);
+			rt_kprintf("\n key=%d",i);
 			rt_mq_send(	inputsig_mq,&i,1);
 		}
 		pre=cur;

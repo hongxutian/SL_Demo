@@ -20,7 +20,7 @@ struct Modify_Manager_Password_Page_Structure
 struct Modify_Manager_Password_Page_Structure *modify_page_struc=RT_NULL;
 
 //初始化页面
-void Modify_Manager_Password_Page_Init(void *param)
+char Modify_Manager_Password_Page_Init(void *param)
 {
 	if(modify_page_struc == RT_NULL)
 	{
@@ -42,6 +42,7 @@ void Modify_Manager_Password_Page_Init(void *param)
 		modify_page_struc->password1_len=0;
 		strcpy(modify_page_struc->display_buff,"新密码:\n");
 	}
+	return 0;
 }
 	
 //清除	

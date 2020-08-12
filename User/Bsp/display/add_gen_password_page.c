@@ -20,7 +20,7 @@ struct Add_Gen_Password_Page_Structure
 struct Add_Gen_Password_Page_Structure *addp_page_struc=RT_NULL;
 
 //初始化页面
-void Add_Gen_Password_Page_Init(void *param)
+char Add_Gen_Password_Page_Init(void *param)
 {
 	if(addp_page_struc == RT_NULL)
 	{
@@ -42,6 +42,7 @@ void Add_Gen_Password_Page_Init(void *param)
 		addp_page_struc->password1_len=0;
 		strcpy(addp_page_struc->display_buff,"新密码:\n");
 	}
+	return 0;
 }
 	
 //清除	

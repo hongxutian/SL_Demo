@@ -59,6 +59,7 @@
 ..\..\output\g4app.o: ..\..\User\Bsp\display\key.h
 ..\..\output\g4app.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\g4app.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\g4app.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\g4app.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 ..\..\output\g4app.o: ..\..\User\Bsp\g4\cJSON.h
 ..\..\output\g4app.o: ..\..\User\Bsp\g4\base64.h
@@ -73,3 +74,4 @@
 ..\..\output\g4app.o: ..\..\User\Bsp\display\msg_page.h
 ..\..\output\g4app.o: ..\..\User\Bsp\flash\sysinit.h
 ..\..\output\g4app.o: ..\..\User\Bsp\FATFS\ff.h
+..\..\output\g4app.o: ..\..\User\Bsp\display\add_user_page.h

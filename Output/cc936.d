@@ -59,5 +59,6 @@
 ..\..\output\cc936.o: ..\..\User\Bsp\display\key.h
 ..\..\output\cc936.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\cc936.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\cc936.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\cc936.o: ..\..\User\Bsp\FATFS\option\../integer.h
 ..\..\output\cc936.o: ..\..\User\Bsp\FATFS\option\../ffconf.h

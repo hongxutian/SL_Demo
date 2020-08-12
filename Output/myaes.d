@@ -61,3 +61,4 @@
 ..\..\output\myaes.o: ..\..\User\Bsp\display\key.h
 ..\..\output\myaes.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\myaes.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\myaes.o: ..\..\User\Bsp\fpm\fpm.h

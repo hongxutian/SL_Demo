@@ -11,7 +11,7 @@ struct Msg_Page_Structure
 };
 
 struct Msg_Page_Structure *msg_struc=RT_NULL;
-void Msg_Page_Init(void *param)
+char Msg_Page_Init(void *param)
 {
 	struct Msg_Page_Structure *p;
 	if(msg_struc == RT_NULL)
@@ -28,6 +28,7 @@ void Msg_Page_Init(void *param)
 		strcpy(msg_struc->display_buff,param);
 		msg_struc->display_flag=1;
 	}
+	return 0;
 }
 	
 

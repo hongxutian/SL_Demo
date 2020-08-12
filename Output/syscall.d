@@ -59,5 +59,6 @@
 ..\..\output\syscall.o: ..\..\User\Bsp\display\key.h
 ..\..\output\syscall.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\syscall.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\syscall.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\syscall.o: ..\..\User\Bsp\FATFS\integer.h
 ..\..\output\syscall.o: ..\..\User\Bsp\FATFS\ffconf.h

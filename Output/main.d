@@ -58,6 +58,7 @@
 ..\..\output\main.o: ..\..\User\Bsp\display\key.h
 ..\..\output\main.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\main.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\main.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\main.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 ..\..\output\main.o: ..\..\User\Bsp\g4\G4App.h
 ..\..\output\main.o: ..\..\User\Bsp\display\UI.h

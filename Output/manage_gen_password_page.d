@@ -59,6 +59,7 @@
 ..\..\output\manage_gen_password_page.o: ..\..\User\Bsp\display\key.h
 ..\..\output\manage_gen_password_page.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\manage_gen_password_page.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\manage_gen_password_page.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\manage_gen_password_page.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 ..\..\output\manage_gen_password_page.o: ..\..\User\Bsp\display\UI.h
 ..\..\output\manage_gen_password_page.o: ..\..\User\Bsp\FATFS\ff.h

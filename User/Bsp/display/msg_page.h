@@ -1,7 +1,7 @@
 #ifndef __MSG_PAGE_H
 #define __MSG_PAGE_H
 
-void Msg_Page_Init(void *param);
+char Msg_Page_Init(void *param);
 void Msg_Page_Clear(void *param);
 void Msg_Page_Display(void *param);
 void Msg_Page_Load(void *param);

@@ -60,6 +60,7 @@
 ..\..\output\main_page.o: ..\..\User\Bsp\display\key.h
 ..\..\output\main_page.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\main_page.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\main_page.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\main_page.o: ..\..\User\Bsp\FATFS\ff.h
 ..\..\output\main_page.o: ..\..\User\Bsp\FATFS\integer.h
 ..\..\output\main_page.o: ..\..\User\Bsp\FATFS\ffconf.h
@@ -68,3 +69,4 @@
 ..\..\output\main_page.o: ..\..\User\Bsp\FATFS\ff.h
 ..\..\output\main_page.o: ..\..\User\Bsp\flash\sysinit.h
 ..\..\output\main_page.o: ..\..\User\Bsp\FATFS\ff.h
+..\..\output\main_page.o: ..\..\User\Bsp\display\add_user_page.h

@@ -59,6 +59,7 @@
 ..\..\output\msg_page.o: ..\..\User\Bsp\display\key.h
 ..\..\output\msg_page.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\msg_page.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\msg_page.o: ..\..\User\Bsp\fpm\fpm.h
 ..\..\output\msg_page.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
 ..\..\output\msg_page.o: ..\..\User\Bsp\display\UI.h
 ..\..\output\msg_page.o: ..\..\User\Bsp\FATFS\ff.h

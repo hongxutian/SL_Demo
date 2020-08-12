@@ -59,3 +59,4 @@
 ..\..\output\stm32f10x_it.o: ..\..\User\Bsp\display\key.h
 ..\..\output\stm32f10x_it.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\stm32f10x_it.o: ..\..\User\Bsp\rtc\bsp_rtc.h
+..\..\output\stm32f10x_it.o: ..\..\User\Bsp\fpm\fpm.h

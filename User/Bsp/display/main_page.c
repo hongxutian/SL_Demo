@@ -5,6 +5,7 @@
 #include "string.h"
 #include "UI.h"
 #include "sysinit.h"
+#include "add_user_page.h"
 
 
 
@@ -20,7 +21,7 @@ struct Main_Page_Structure
 struct Main_Page_Structure *main_page_struc=RT_NULL;
 
 //初始化页面
-void Main_Page_Init(void *param)
+char Main_Page_Init(void *param)
 {
 	if(main_page_struc == RT_NULL)
 	{
@@ -38,6 +39,7 @@ void Main_Page_Init(void *param)
 		main_page_struc->display_flag=1; 
 		strcpy(main_page_struc->display_buff,"开锁需要验证指纹或密码");
 	}
+	return 0;
 }
 
 void Main_Page_Load(void *param)
@@ -75,6 +77,7 @@ void Main_Page_Display(void *param)
 void Main_Page_Action(char value)
 {
 	char i;
+	char out[60]; 
 	if(value <= 9)
 	{
 		if(main_page_struc->work_state==0)
@@ -131,6 +134,8 @@ void Main_Page_Action(char value)
 			if(i == 0)
 			{
 				strcpy(main_page_struc->display_buff,"密码正确");
+				sprintf(out,"{\"type\":\"record\",\"record\":1}");
+				rt_mq_send(g4msgmq,out,(strlen(out)+1));
 			}else
 			{
 				strcpy(main_page_struc->display_buff,"密码错误");
@@ -194,8 +199,9 @@ void Main_Page_Action(char value)
 		//rt_kprintf("\ncurrent time=%d",Get_RTC_Current_Time());
 	}else if(value == 15)
 	{
-		main_page_struc->display_flag=1;
+		//main_page_struc->display_flag=1;
 		//Set_RTC_Current_Time(100);
+		UI_Page_Add(Add_User_Page_Init,Add_User_Page_Clear,Add_User_Page_Display,Add_User_Page_Load,Add_User_Page_Action,"李");
 	}
 }
 
