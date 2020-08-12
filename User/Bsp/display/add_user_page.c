@@ -60,16 +60,16 @@ void Add_User_Page_Clear(void *param)
 	char *out;
 	if(adu_struc != RT_NULL)
 	{
-//		if(adu_struc->work_state != 4 && adu_struc->work_state != 5)
-//		{
-//			jsend=cJSON_CreateObject();
-//			cJSON_AddStringToObject(jsend,"type","addUser");
-//			cJSON_AddStringToObject(jsend,"result","fail");
-//			out=cJSON_PrintUnformatted(jsend);
-//			rt_mq_send(g4msgmq,out,(strlen(out)+1));
-//			rt_free(out);
-//			cJSON_Delete(jsend);	
-//		}
+		if(adu_struc->work_state != 4 && adu_struc->work_state != 5)
+		{
+			jsend=cJSON_CreateObject();
+			cJSON_AddStringToObject(jsend,"type","addUser");
+			cJSON_AddStringToObject(jsend,"result","fail");
+			out=cJSON_PrintUnformatted(jsend);
+			rt_mq_send(g4msgmq,out,(strlen(out)+1));
+			rt_free(out);
+			cJSON_Delete(jsend);	
+		}
 		rt_free(adu_struc);
 		adu_struc=RT_NULL;
 	}
@@ -90,15 +90,17 @@ void Add_User_Page_Display(void *param)
 	if(adu_struc->display_flag == 1)
 	{
 		adu_struc->display_flag=0;
-		OLED_GRAM_ClearScreen();
-		OLED_GRAM_WriteStr(0,0,"增加用户:");
 		if(adu_struc->work_state == 0)
 		{
+			OLED_GRAM_ClearScreen();
+			OLED_GRAM_WriteStr(0,0,"增加用户:");
 			sprintf(adu_struc->display_buff,"按确定键开始录入指纹");
 			OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 			OLED_GRAM_Reflash();
 		}else if(adu_struc->work_state == 1)
 		{
+			OLED_GRAM_ClearScreen();
+			OLED_GRAM_WriteStr(0,0,"增加用户:");
 			sprintf(adu_struc->display_buff,"将手指放在指纹传感器上采集指纹");
 			OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 			OLED_GRAM_Reflash();
@@ -108,22 +110,30 @@ void Add_User_Page_Display(void *param)
 			{
 				adu_struc->work_state=4;
 				FPM_GetUserNumber(&temp);
+				OLED_GRAM_ClearScreen();
+				OLED_GRAM_WriteStr(0,0,"增加用户:");
 				sprintf(adu_struc->display_buff,"录入失败");
 				OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 				OLED_GRAM_Reflash();
 			}else if(res != 0)
 			{
+				OLED_GRAM_ClearScreen();
+				OLED_GRAM_WriteStr(0,0,"增加用户:");
 				sprintf(adu_struc->display_buff,"指纹错误,按确定键继续");
 				OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 				OLED_GRAM_Reflash();
 			}else
 			{
+				OLED_GRAM_ClearScreen();
+				OLED_GRAM_WriteStr(0,0,"增加用户:");
 				sprintf(adu_struc->display_buff,"集到指纹,按确定键继续");
 				OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 				OLED_GRAM_Reflash();
 			}
 		}else if(adu_struc->work_state == 2)
 		{
+			OLED_GRAM_ClearScreen();
+			OLED_GRAM_WriteStr(0,0,"增加用户:");
 			sprintf(adu_struc->display_buff,"将手指放在指纹传感器上采集指纹");
 			OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 			OLED_GRAM_Reflash();
@@ -131,6 +141,8 @@ void Add_User_Page_Display(void *param)
 			i=FPM_AddUser(0x02,adu_struc->usernum,0x01,&res);
 			if(i != 0)
 			{
+				OLED_GRAM_ClearScreen();
+				OLED_GRAM_WriteStr(0,0,"增加用户:");
 				adu_struc->work_state=4;
 				FPM_GetUserNumber(&temp);
 				sprintf(adu_struc->display_buff,"录入失败");
@@ -138,17 +150,23 @@ void Add_User_Page_Display(void *param)
 				OLED_GRAM_Reflash();
 			}else if(res != 0)
 			{
+				OLED_GRAM_ClearScreen();
+				OLED_GRAM_WriteStr(0,0,"增加用户:");
 				sprintf(adu_struc->display_buff,"指纹错误,按确定键继续");
 				OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 				OLED_GRAM_Reflash();
 			}else
 			{
+				OLED_GRAM_ClearScreen();
+				OLED_GRAM_WriteStr(0,0,"增加用户:");
 				sprintf(adu_struc->display_buff,"集到指纹,按确定键继续");
 				OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 				OLED_GRAM_Reflash();
 			}
 		}else if(adu_struc->work_state == 3)
 		{
+			OLED_GRAM_ClearScreen();
+			OLED_GRAM_WriteStr(0,0,"增加用户:");
 			sprintf(adu_struc->display_buff,"将手指放在指纹传感器上采集指纹");
 			OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 			OLED_GRAM_Reflash();
@@ -158,18 +176,24 @@ void Add_User_Page_Display(void *param)
 			{
 				adu_struc->work_state=4;
 				FPM_GetUserNumber(&temp);
+				OLED_GRAM_ClearScreen();
+				OLED_GRAM_WriteStr(0,0,"增加用户:");
 				sprintf(adu_struc->display_buff,"录入失败");
 				OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 				OLED_GRAM_Reflash();
 			}else if(res != 0)
 			{
 				adu_struc->work_state=4;
-				sprintf(adu_struc->display_buff,"指纹错误,按确定键继续");
+				OLED_GRAM_ClearScreen();
+				OLED_GRAM_WriteStr(0,0,"增加用户:");
+				sprintf(adu_struc->display_buff,"录入失败");
 				OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 				OLED_GRAM_Reflash();
 			}else
 			{
-				adu_struc->work_state=4;
+				adu_struc->work_state=5;
+				OLED_GRAM_ClearScreen();
+				OLED_GRAM_WriteStr(0,0,"增加用户:");
 				sprintf(adu_struc->display_buff,"指纹录入成功");
 				OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 				OLED_GRAM_Reflash();
@@ -181,26 +205,26 @@ void Add_User_Page_Display(void *param)
 			OLED_GRAM_WriteStr(0,16,adu_struc->display_buff);
 			OLED_GRAM_Reflash();
 		}
-//		if(adu_struc->work_state == 4)
-//		{
-//			jsend=cJSON_CreateObject();
-//			cJSON_AddStringToObject(jsend,"type","addUser");
-//			cJSON_AddStringToObject(jsend,"result","fail");
-//			out=cJSON_PrintUnformatted(jsend);
-//			rt_mq_send(g4msgmq,out,(strlen(out)+1));
-//			rt_free(out);
-//			cJSON_Delete(jsend);	
-//		}else if(adu_struc->work_state == 5)
-//		{
-//			jsend=cJSON_CreateObject();
-//			cJSON_AddStringToObject(jsend,"type","addUser");
-//			cJSON_AddStringToObject(jsend,"result","success");
-//			cJSON_AddNumberToObject(jsend,"number",adu_struc->usernum);
-//			out=cJSON_PrintUnformatted(jsend);
-//			rt_mq_send(g4msgmq,out,(strlen(out)+1));
-//			rt_free(out);
-//			cJSON_Delete(jsend);	
-//		}
+		if(adu_struc->work_state == 4)
+		{
+			jsend=cJSON_CreateObject();
+			cJSON_AddStringToObject(jsend,"type","addUser");
+			cJSON_AddStringToObject(jsend,"result","fail");
+			out=cJSON_PrintUnformatted(jsend);
+			rt_mq_send(g4msgmq,out,(strlen(out)+1));
+			rt_free(out);
+			cJSON_Delete(jsend);	
+		}else if(adu_struc->work_state == 5)
+		{
+			jsend=cJSON_CreateObject();
+			cJSON_AddStringToObject(jsend,"type","addUser");
+			cJSON_AddStringToObject(jsend,"result","success");
+			cJSON_AddNumberToObject(jsend,"number",adu_struc->usernum);
+			out=cJSON_PrintUnformatted(jsend);
+			rt_mq_send(g4msgmq,out,(strlen(out)+1));
+			rt_free(out);
+			cJSON_Delete(jsend);	
+		}
 	}
 }
 	

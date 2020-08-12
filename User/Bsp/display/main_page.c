@@ -201,7 +201,7 @@ void Main_Page_Action(char value)
 	{
 		//main_page_struc->display_flag=1;
 		//Set_RTC_Current_Time(100);
-		UI_Page_Add(Add_User_Page_Init,Add_User_Page_Clear,Add_User_Page_Display,Add_User_Page_Load,Add_User_Page_Action,"Àî");
+		//UI_Page_Add(Add_User_Page_Init,Add_User_Page_Clear,Add_User_Page_Display,Add_User_Page_Load,Add_User_Page_Action,"ÌïºéĞ÷");
 	}
 }
 

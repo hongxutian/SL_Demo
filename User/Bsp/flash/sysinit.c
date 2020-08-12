@@ -667,6 +667,7 @@ char Check_Temporary_Password(char *password,FIL *file)
 	char *p;
 	char back;
 	struct Temporary_Password_Structure *t;
+	DWORD  fpre,fnow,fp;//文件的位置
 	
 	fo = file;
 	if(fo == RT_NULL)
@@ -674,7 +675,7 @@ char Check_Temporary_Password(char *password,FIL *file)
 		return 1;
 	}
 	
-	res = f_open(fo,"1:temporary_password.txt",FA_READ);
+	res = f_open(fo,"1:temporary_password.txt",FA_READ|FA_WRITE);
 	if(res != FR_OK)
 	{
 		return 1;
@@ -682,7 +683,9 @@ char Check_Temporary_Password(char *password,FIL *file)
 	
 	while(1)
 	{
+		fpre = f_tell(fo);
 		p=f_gets(buff,50,fo);
+		fnow = f_tell(fo);
 		if(p != 0)
 		{
 			t = Parse_Temporary_Password(p);
@@ -690,9 +693,39 @@ char Check_Temporary_Password(char *password,FIL *file)
 			{
 				if(strcmp(t->password,password)==0)
 				{
-					back = 0;
-					rt_free(t);
-					break;
+					if(t->type == 0)
+					{
+						fp = fpre;
+						while(1)
+						{
+							f_lseek(fo,fnow);
+							p=f_gets(buff,50,fo);
+							if(p != 0)
+							{
+								fnow = f_tell(fo);
+								f_lseek(fo,fpre);
+								f_printf(fo,p);
+								fpre = f_tell(fo);
+							}else
+							{
+								f_lseek(fo,fpre);
+								f_truncate(fo);
+								break;
+							}
+						}
+						f_lseek(fo,fp);
+					}
+					if((Get_RTC_Current_Time()-t->write_time) < t->effective_time)
+					{
+						back = 0;
+						rt_free(t);
+						break;
+					}else
+					{
+						back = 2;
+						rt_free(t);
+						break;
+					}
 				}else
 				{
 					rt_free(t);
@@ -713,6 +746,80 @@ char Check_Temporary_Password(char *password,FIL *file)
 	f_close(fo);
 	return back;
 }
+
+//删除过期的临时密码
+char Delete_Temporary_Password(FIL *file)
+{
+	FIL *fo;
+	char buff[50];
+	FRESULT res;
+	char *p;
+	char back;
+	struct Temporary_Password_Structure *t;
+	DWORD  fpre,fnow,fp;//文件的位置
+	
+	fo = file;
+	if(fo == RT_NULL)
+	{
+		return 1;
+	}
+	
+	res = f_open(fo,"1:temporary_password.txt",FA_READ|FA_WRITE);
+	if(res != FR_OK)
+	{
+		return 1;
+	}
+	
+	while(1)
+	{
+		fpre = f_tell(fo);
+		p=f_gets(buff,50,fo);
+		fnow = f_tell(fo);
+		if(p != 0)
+		{
+			t = Parse_Temporary_Password(p);
+			if(t != RT_NULL)
+			{
+				if((Get_RTC_Current_Time()-t->write_time) > t->effective_time)
+				{
+					fp = fpre;
+					while(1)
+					{
+						f_lseek(fo,fnow);
+						p=f_gets(buff,50,fo);
+						if(p != 0)
+						{
+							fnow = f_tell(fo);
+							f_lseek(fo,fpre);
+							f_printf(fo,p);
+							fpre = f_tell(fo);
+						}else
+						{
+							f_lseek(fo,fpre);
+							f_truncate(fo);
+							break;
+						}
+					}
+					f_lseek(fo,fp);
+				}
+				rt_free(t);
+			}else
+			{
+				back = 1;
+				break;
+			}
+		}else
+		{
+			back = 0;
+			break;
+		}
+		
+	}
+	
+	f_close(fo);
+	return back;
+}
+
 
 char Add_Temporary_Password(char *password,uint8_t type,uint32_t effective_time,uint32_t write_time,FIL *file)
 {
