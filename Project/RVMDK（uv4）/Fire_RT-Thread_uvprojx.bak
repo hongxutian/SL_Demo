@@ -364,7 +364,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\rtthread\3.0.3\components\finsh;..\..\rtthread\3.0.3\include;..\..\rtthread\3.0.3\include\libc;..\..\User\Bsp\led;..\..\User\Bsp\key;..\..\User\Bsp\uart;..\..\User\Bsp\exti;..\..\User\Bsp\g4;..\..\User\Bsp\oled;..\..\User\Bsp\display;..\..\User\Bsp\flash;..\..\User\Bsp\FATFS;..\..\User\Bsp\rtc</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\rtthread\3.0.3\components\finsh;..\..\rtthread\3.0.3\include;..\..\rtthread\3.0.3\include\libc;..\..\User\Bsp\led;..\..\User\Bsp\key;..\..\User\Bsp\uart;..\..\User\Bsp\exti;..\..\User\Bsp\g4;..\..\User\Bsp\oled;..\..\User\Bsp\display;..\..\User\Bsp\flash;..\..\User\Bsp\FATFS;..\..\User\Bsp\rtc;..\..\User\Bsp\fpm</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -588,11 +588,6 @@
               <FilePath>..\..\User\stm32f10x_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f10x_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\stm32f10x_it.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\User\stm32f10x_it.h</FilePath>
@@ -616,6 +611,11 @@
               <FileName>bsp_rtc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\Bsp\rtc\bsp_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>fpm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\Bsp\fpm\fpm.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -821,6 +821,11 @@
               <FileName>msg_page.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\Bsp\display\msg_page.c</FilePath>
+            </File>
+            <File>
+              <FileName>add_user_page.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\Bsp\display\add_user_page.c</FilePath>
             </File>
           </Files>
         </Group>
