@@ -301,11 +301,13 @@ ARM Macro Assembler    Page 5
               E000ED04 
               E000ED20 
               E000ED08 
-Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=..\..\ou
-tput\context_rvds.d -o..\..\output\context_rvds.o -IF:\Keil_v5\ARM\RV31\INC -IF
-:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include -IF:\Keil_v5\ARM\PACK\Keil\STM
-32F1xx_DFP\2.1.0\Device\Include --predefine="__MICROLIB SETA 1" --list=..\..\li
-sting\context_rvds.lst ..\..\rtthread\3.0.3\libcpu\arm\cortex-m3\context_rvds.S
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=..\..\output\context_rvds.d -o..\..\output\context_rvds.o -I.\RTE\
+_Fire_RT-Thread -ID:\Software\keil\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\De
+vice\Include -ID:\Software\keil\Keil_v5\ARM\CMSIS\Include --predefine="__MICROL
+IB SETA 1" --predefine="__UVISION_VERSION SETA 526" --predefine="STM32F10X_HD S
+ETA 1" --list=..\..\listing\context_rvds.lst ..\..\rtthread\3.0.3\libcpu\arm\co
+rtex-m3\context_rvds.S
 
 
 
@@ -564,4 +566,4 @@ Symbol: rt_thread_switch_interrupt_flag
 s.S
 
 4 symbols
-354 symbols in table
+356 symbols in table

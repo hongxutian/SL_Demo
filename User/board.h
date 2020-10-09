@@ -21,6 +21,7 @@
 #include "bsp_spi_flash.h"
 #include "bsp_rtc.h"
 #include "fpm.h"
+#include "lock_operation.h"
 
 #define PASSWORD_LEN_MAX 10
 
@@ -34,6 +35,9 @@ extern rt_thread_t g4appsendth;
 extern rt_mq_t g4msgmq;
 
 extern rt_mq_t inputsig_mq;
+
+extern rt_thread_t lockth;
+extern rt_mq_t lockmq;
 
 /*
 *************************************************************************

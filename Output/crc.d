@@ -2,7 +2,7 @@
 ..\..\output\crc.o: ..\..\User\Bsp\g4\CRC.h
 ..\..\output\crc.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\crc.o: ..\..\Libraries\CMSIS\core_cm3.h
-..\..\output\crc.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\..\output\crc.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\..\output\crc.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\crc.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\crc.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h

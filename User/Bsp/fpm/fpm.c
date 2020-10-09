@@ -22,18 +22,18 @@ static void NVIC_Configuration(void)
   NVIC_Init(&NVIC_InitStructure);
 	
 	
-	/* 配置NVIC为优先级组1 */
-  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-  
-  /* 配置中断源：按键1 */
-  NVIC_InitStructure.NVIC_IRQChannel = TOUCH_INT_EXTI_IRQ;
-  /* 配置抢占优先级 */
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-  /* 配置子优先级 */
-  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
-  /* 使能中断通道 */
-  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-  NVIC_Init(&NVIC_InitStructure);
+//	/* 配置NVIC为优先级组1 */
+//  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+//  
+//  /* 配置中断源：按键1 */
+//  NVIC_InitStructure.NVIC_IRQChannel = TOUCH_INT_EXTI_IRQ;
+//  /* 配置抢占优先级 */
+//  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+//  /* 配置子优先级 */
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+//  /* 使能中断通道 */
+//  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+//  NVIC_Init(&NVIC_InitStructure);
 }
 
 static void FPM_USART_Config(void)
@@ -51,7 +51,7 @@ static void FPM_USART_Config(void)
 	// 开启触控信号相关时钟
 	RCC_APB2PeriphClockCmd(TOUCH_INT_GPIO_CLK,ENABLE);
 	
-	RCC_APB2PeriphClockCmd( FPM_CONTROL_GPIO_CLK, ENABLE);
+	RCC_APB2PeriphClockCmd( FPM_TOUCH_VOL_CONTROL_GPIO_CLK | FPM_WORK_VOL_CONTROL_GPIO_CLK, ENABLE);
 	
 	
 	// 中断优先级配置
@@ -65,24 +65,28 @@ static void FPM_USART_Config(void)
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
   GPIO_Init(TOUCH_INT_GPIO_PORT, &GPIO_InitStructure);
 
-	/* 选择EXTI的信号源 */
-  GPIO_EXTILineConfig(TOUCH_INT_EXTI_PORTSOURCE, TOUCH_INT_EXTI_PINSOURCE); 
-  EXTI_InitStructure.EXTI_Line = TOUCH_INT_EXTI_LINE;
-	
-	/* EXTI为中断模式 */
-  EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-	/* 上升沿中断 */
-  EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
-  /* 使能中断 */	
-  EXTI_InitStructure.EXTI_LineCmd = ENABLE;
-  EXTI_Init(&EXTI_InitStructure);
+//	/* 选择EXTI的信号源 */
+//  GPIO_EXTILineConfig(TOUCH_INT_EXTI_PORTSOURCE, TOUCH_INT_EXTI_PINSOURCE); 
+//  EXTI_InitStructure.EXTI_Line = TOUCH_INT_EXTI_LINE;
+//	
+//	/* EXTI为中断模式 */
+//  EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+//	/* 上升沿中断 */
+//  EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+//  /* 使能中断 */	
+//  EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+//  EXTI_Init(&EXTI_InitStructure);
 	//------------------------------------------------------------------------
 	
-	GPIO_InitStructure.GPIO_Pin = FPM_CONTROL_GPIO_PIN;
+	GPIO_InitStructure.GPIO_Pin = FPM_TOUCH_VOL_CONTROL_GPIO_PIN;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(FPM_CONTROL_GPIO_PORT, &GPIO_InitStructure);
-	FPM_CONTROL_DOWN;
+	GPIO_Init(FPM_TOUCH_VOL_CONTROL_GPIO_PORT, &GPIO_InitStructure);
+	FPM_TOUCH_VOL_CONTROL_DOWN;
+	
+	GPIO_InitStructure.GPIO_Pin = FPM_WORK_VOL_CONTROL_GPIO_PIN;
+	GPIO_Init(FPM_WORK_VOL_CONTROL_GPIO_PORT, &GPIO_InitStructure);
+	FPM_WORK_VOL_CONTROL_UP;
 
 
 
@@ -141,6 +145,22 @@ void FPM_SendArray(uint8_t *arry,uint16_t len)
 	for(i=0;i<len;i++)
 	{
 		FPM_SendByte(arry[i]);
+	}
+}
+
+/**
+  * @brief  检测指纹模块是否被按下
+  * @param  无
+  * @retval 0表示没有按下，1表示按下
+  */
+uint8_t FPM_IsTouch(void)
+{
+	if(GPIO_ReadInputDataBit(TOUCH_INT_GPIO_PORT,TOUCH_INT_GPIO_PIN) == 1)
+	{
+		return 1;
+	}else 
+	{
+		return 0;
 	}
 }
 
@@ -698,29 +718,29 @@ void FPM_USART_IRQHandler()
 	}
 }
 
-void TOUCH_IRQHandler(void)
-{
-  uint8_t data = 16;
-	uint8_t t;
-	//确保是否产生了EXTI Line中断
-	if(EXTI_GetITStatus(TOUCH_INT_EXTI_LINE) != RESET) 
-	{
-		t = GPIO_ReadInputDataBit(TOUCH_INT_GPIO_PORT,TOUCH_INT_GPIO_PIN);
-		//rt_kprintf("\nfinger touch,t=%d",t);
-		if(t == 1)
-		{
-			FPM_CONTROL_UP;
-			/* 将数据写入（发送）到队列中，等待时间为 0  */
-			rt_mq_send(	inputsig_mq,	/* 写入（发送）队列的ID(句柄) */
-									&data,			/* 写入（发送）的数据 */
-									1);	/* 数据的长度 */
-			//清除中断标志位
-			
-		}else
-		{
-			//GPIO_ResetBits(FPM_CONTROL_GPIO_PORT,FPM_CONTROL_GPIO_PIN);
-		}
-		EXTI_ClearITPendingBit(TOUCH_INT_EXTI_LINE);     
-	}  
-}
+//void TOUCH_IRQHandler(void)
+//{
+//  uint8_t data = 16;
+//	uint8_t t;
+//	//确保是否产生了EXTI Line中断
+//	if(EXTI_GetITStatus(TOUCH_INT_EXTI_LINE) != RESET) 
+//	{
+//		t = GPIO_ReadInputDataBit(TOUCH_INT_GPIO_PORT,TOUCH_INT_GPIO_PIN);
+//		//rt_kprintf("\nfinger touch,t=%d",t);
+//		if(t == 1)
+//		{
+//			FPM_TOUCH_VOL_CONTROL_UP;
+//			/* 将数据写入（发送）到队列中，等待时间为 0  */
+//			rt_mq_send(	inputsig_mq,	/* 写入（发送）队列的ID(句柄) */
+//									&data,			/* 写入（发送）的数据 */
+//									1);	/* 数据的长度 */
+//			//清除中断标志位
+//			
+//		}else
+//		{
+//			//GPIO_ResetBits(FPM_CONTROL_GPIO_PORT,FPM_CONTROL_GPIO_PIN);
+//		}
+//		EXTI_ClearITPendingBit(TOUCH_INT_EXTI_LINE);     
+//	}  
+//}
 

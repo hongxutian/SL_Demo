@@ -50,6 +50,9 @@ rt_thread_t uith = RT_NULL;
 
 rt_mq_t inputsig_mq = RT_NULL;//外部输入信号消息队列
 
+
+rt_thread_t lockth = RT_NULL;
+rt_mq_t lockmq = RT_NULL;
 /************************* 全局变量声明 ****************************/
 /*
  * 当我们在写应用程序的时候，可能需要用到一些全局变量。
@@ -119,6 +122,15 @@ int main(void)
                      2,    /* 消息队列的最大容量 */
                      RT_IPC_FLAG_FIFO);/* 队列模式 FIFO(0x00)*/
   if (inputsig_mq != RT_NULL)
+    rt_kprintf("消息队列创建成功！\n\n");
+  
+	
+	/* 创建一个消息队列 */
+	lockmq = rt_mq_create("lockmq",/* 消息队列名字 */
+                     1,     /* 消息的最大长度 */
+                     2,    /* 消息队列的最大容量 */
+                     RT_IPC_FLAG_FIFO);/* 队列模式 FIFO(0x00)*/
+  if (lockmq != RT_NULL)
     rt_kprintf("消息队列创建成功！\n\n");
   
 
@@ -199,6 +211,22 @@ int main(void)
     /* 启动线程，开启调度 */
    if (key_th != RT_NULL)
         rt_thread_startup(key_th);
+    else
+        return -1;
+		
+		
+		/* 创建一个任务 */
+	lockth =                          /* 线程控制块指针 */
+    rt_thread_create( "lockth",              /* 线程名字 */
+                      lock_operation_thread_entry,   /* 线程入口函数 */
+                      RT_NULL,             /* 线程入口函数参数 */
+                      256,                 /* 线程栈大小 */
+                      6,                   /* 线程的优先级 */
+                      20);                 /* 线程时间片 */
+                   
+    /* 启动线程，开启调度 */
+   if (lockth != RT_NULL)
+        rt_thread_startup(lockth);
     else
         return -1;
 }

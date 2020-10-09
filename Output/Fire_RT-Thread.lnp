@@ -32,6 +32,7 @@
 "..\..\output\sysinit.o"
 "..\..\output\bsp_rtc.o"
 "..\..\output\fpm.o"
+"..\..\output\lock_operation.o"
 "..\..\output\clock.o"
 "..\..\output\components.o"
 "..\..\output\device.o"
@@ -74,6 +75,6 @@
 "..\..\output\cc936.o"
 "..\..\output\syscall.o"
 --library_type=microlib --strict --scatter "..\..\Output\Fire_RT-Thread.sct"
---summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "..\..\Listing\Fire_RT-Thread.map" -o ..\..\Output\Fire_RT-Thread.axf

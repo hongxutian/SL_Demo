@@ -2,7 +2,7 @@
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\oled\OLED_I2C.h
 ..\..\output\oled_i2c.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\oled_i2c.o: ..\..\Libraries\CMSIS\core_cm3.h
-..\..\output\oled_i2c.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\..\output\oled_i2c.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\..\output\oled_i2c.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\oled_i2c.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\oled_i2c.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h
@@ -32,7 +32,7 @@
 ..\..\output\oled_i2c.o: ..\..\User\board.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\led\bsp_led.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\uart\bsp_usart.h
-..\..\output\oled_i2c.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+..\..\output\oled_i2c.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\exti\bsp_exti.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\g4\G4.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\rthw.h
@@ -40,16 +40,16 @@
 ..\..\output\oled_i2c.o: ..\..\User\rtconfig.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\rtdebug.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\rtdef.h
-..\..\output\oled_i2c.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\stdarg.h
+..\..\output\oled_i2c.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\rtlibc.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\libc/libc_stat.h
-..\..\output\oled_i2c.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\time.h
+..\..\output\oled_i2c.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\libc/libc_errno.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\libc/libc_fcntl.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\libc/libc_ioctl.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\libc/libc_dirent.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\libc/libc_signal.h
-..\..\output\oled_i2c.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\signal.h
+..\..\output\oled_i2c.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\signal.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\libc/libc_fdset.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\rtservice.h
 ..\..\output\oled_i2c.o: ..\..\rtthread\3.0.3\include\rtm.h
@@ -60,6 +60,7 @@
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\rtc\bsp_rtc.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\fpm\fpm.h
+..\..\output\oled_i2c.o: ..\..\User\Bsp\lock\lock_operation.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\oled\codetab.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\oled\codingtable.h
 ..\..\output\oled_i2c.o: ..\..\User\Bsp\oled\zh.h

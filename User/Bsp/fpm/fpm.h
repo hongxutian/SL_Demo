@@ -46,12 +46,19 @@
 
 
 //控制引脚
-#define FPM_CONTROL_GPIO_PORT    	GPIOA			              /* GPIO端口 */
-#define FPM_CONTROL_GPIO_CLK 	    RCC_APB2Periph_GPIOA		/* GPIO端口时钟 */
-#define FPM_CONTROL_GPIO_PIN			GPIO_Pin_4		      
+#define FPM_TOUCH_VOL_CONTROL_GPIO_PORT    	GPIOA			              /* GPIO端口 */
+#define FPM_TOUCH_VOL_CONTROL_GPIO_CLK 	    RCC_APB2Periph_GPIOA		/* GPIO端口时钟 */
+#define FPM_TOUCH_VOL_CONTROL_GPIO_PIN			GPIO_Pin_4
 
-#define FPM_CONTROL_DOWN GPIO_SetBits(FPM_CONTROL_GPIO_PORT,FPM_CONTROL_GPIO_PIN)
-#define FPM_CONTROL_UP   GPIO_ResetBits(FPM_CONTROL_GPIO_PORT,FPM_CONTROL_GPIO_PIN)
+#define FPM_WORK_VOL_CONTROL_GPIO_PORT    	GPIOA			              /* GPIO端口 */
+#define FPM_WORK_VOL_CONTROL_GPIO_CLK 	    RCC_APB2Periph_GPIOA		/* GPIO端口时钟 */
+#define FPM_WORK_VOL_CONTROL_GPIO_PIN				GPIO_Pin_5
+
+#define FPM_TOUCH_VOL_CONTROL_DOWN 					GPIO_SetBits(FPM_TOUCH_VOL_CONTROL_GPIO_PORT,FPM_TOUCH_VOL_CONTROL_GPIO_PIN)
+#define FPM_TOUCH_VOL_CONTROL_UP   					GPIO_ResetBits(FPM_TOUCH_VOL_CONTROL_GPIO_PORT,FPM_TOUCH_VOL_CONTROL_GPIO_PIN)
+
+#define FPM_WORK_VOL_CONTROL_DOWN 					GPIO_SetBits(FPM_TOUCH_VOL_CONTROL_GPIO_PORT,FPM_TOUCH_VOL_CONTROL_GPIO_PIN)
+#define FPM_WORK_VOL_CONTROL_UP   					GPIO_ResetBits(FPM_TOUCH_VOL_CONTROL_GPIO_PORT,FPM_TOUCH_VOL_CONTROL_GPIO_PIN)
 
 typedef struct
 {
@@ -74,6 +81,7 @@ uint8_t FPM_GetAllUserInfo(uint8_t * res,uint16_t *num,FPM_USER_INFO_STRUC **use
 uint8_t FPM_SetCompLevel(uint8_t level,uint8_t * res);
 uint8_t FPM_ReadCompLevel(uint8_t *level,uint8_t * res);
 uint8_t FPM_GetAvailableUserNumber(uint16_t *usernum,uint8_t *res);
+uint8_t FPM_IsTouch(void);
 
 #endif
 

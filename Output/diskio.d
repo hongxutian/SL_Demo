@@ -5,7 +5,7 @@
 ..\..\output\diskio.o: ..\..\User\board.h
 ..\..\output\diskio.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\diskio.o: ..\..\Libraries\CMSIS\core_cm3.h
-..\..\output\diskio.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\..\output\diskio.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\..\output\diskio.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
 ..\..\output\diskio.o: ..\..\User\stm32f10x_conf.h
 ..\..\output\diskio.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h
@@ -34,7 +34,7 @@
 ..\..\output\diskio.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\diskio.o: ..\..\User\Bsp\led\bsp_led.h
 ..\..\output\diskio.o: ..\..\User\Bsp\uart\bsp_usart.h
-..\..\output\diskio.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+..\..\output\diskio.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\diskio.o: ..\..\User\Bsp\exti\bsp_exti.h
 ..\..\output\diskio.o: ..\..\User\Bsp\g4\G4.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\rthw.h
@@ -42,16 +42,16 @@
 ..\..\output\diskio.o: ..\..\User\rtconfig.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\rtdebug.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\rtdef.h
-..\..\output\diskio.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\stdarg.h
+..\..\output\diskio.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\rtlibc.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\libc/libc_stat.h
-..\..\output\diskio.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\time.h
+..\..\output\diskio.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\libc/libc_errno.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\libc/libc_fcntl.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\libc/libc_ioctl.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\libc/libc_dirent.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\libc/libc_signal.h
-..\..\output\diskio.o: F:\Keil_v5\ARM\ARMCC\bin\..\include\signal.h
+..\..\output\diskio.o: D:\Software\keil\Keil_v5\ARM\ARMCC\Bin\..\include\signal.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\libc/libc_fdset.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\rtservice.h
 ..\..\output\diskio.o: ..\..\rtthread\3.0.3\include\rtm.h
@@ -62,4 +62,5 @@
 ..\..\output\diskio.o: ..\..\User\Bsp\flash\bsp_spi_flash.h
 ..\..\output\diskio.o: ..\..\User\Bsp\rtc\bsp_rtc.h
 ..\..\output\diskio.o: ..\..\User\Bsp\fpm\fpm.h
+..\..\output\diskio.o: ..\..\User\Bsp\lock\lock_operation.h
 ..\..\output\diskio.o: ..\..\User\Bsp\FATFS\ffconf.h
